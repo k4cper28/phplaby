@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div><h4>Dane osobowe:</h4>
+    <form method="get" action="odbierz4.php">
+        <p> Nazwisko: <input name="nazw" /><br/>
+            Imię: <input name="imie" /><br/>
+            Adres e-mail:<input name="email" /></p>
+        <h4>Proszę zaznaczyć zamawiane produkty:</h4>
+        <p>
+            <label><input type="checkbox" name="jezyk[]" value="php"> PHP</label>
+            <label><input type="checkbox" name="jezyk[]" value="cpp"> C++</label>
+            <label><input type="checkbox" name="jezyk[]" value="java"> Java</label><br>
+            <input type="submit" value="Wyslij"/>
+            <input type="reset" value="Anuluj"/>
+        </p>
+    </form></div>
+</body>
+</html>
