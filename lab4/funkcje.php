@@ -123,21 +123,24 @@
                     if($tut == "PHP"){
                         $lines = file('dane.txt');
                         foreach ($lines as $line) {
-                            if(strpos($line, $tut) !== false){
+                        $elements = explode(' ', $line); // Dzielenie linii na elementy za pomocą spacji
+                            if(strpos($elements[5], $tut) !== false){
                                   echo "<br>" . $line;
                               }
                         }
                     }else if($tut == "CPP"){
                        $lines = file('dane.txt');
                        foreach ($lines as $line) {
-                            if(strpos($line, $tut) !== false){
+                       $elements = explode(' ', $line); // Dzielenie linii na elementy za pomocą spacji
+                            if(strpos($elements[5], $tut) !== false){
                             echo "<br>" . $line;
                             }
                        }
                     }else if($tut == "Java"){
                        $lines = file('dane.txt');
                        foreach ($lines as $line) {
-                            if(strpos($line, $tut) !== false){
+                       $elements = explode(' ', $line); // Dzielenie linii na elementy za pomocą spacji
+                            if(strpos($elements[5], $tut) !== false){
                             echo "<br>" . $line;
                             }
                        }

@@ -1,7 +1,7 @@
 Java - 2
-Html - 5
-CSS - 4
-XML - 4
+Html - 6
+CSS - 5
+XML - 5
 C# - 1
 PHP - 1
 JavaScript - 1
