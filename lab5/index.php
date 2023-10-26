@@ -13,8 +13,14 @@ if (filter_input(INPUT_POST, 'submit')) {
         echo "<p>Niepoprawne dane rejestracji.</p>";
     else{
         echo "<p>Poprawne dane rejestracji:</p>";
-        $user->show();
+        $user   -> show();
+        $user -> save('users.json');
+        $user ->saveXML();
     }
 }
+    echo "Dane od z json:<br>";
+    User::getAllUsers('users.json');
+    echo "Dane od z xml:<br>";
+    User::getAllUsersFromXml();
 
 ?>
