@@ -56,29 +56,33 @@
             <?php
 
             include_once("funkcje.php");
-            include_once "Klasy/BazaPDO.php";
+            //include_once "Klasy/BazaPDO.php";
             //tworzymy uchwyt do bazy danych:
-            $baza = new BazaPDO('mysql:host=localhost;dbname=klienci', 'root','');
+            $pdo = new PDO('mysql:host=localhost;dbname=klienci', 'root','');
             if (filter_input(INPUT_POST, "submit")) {
                 $akcja = filter_input(INPUT_POST, "submit");
                 switch ($akcja) {
                     case "zapisz" :
-                        dodajdoBDPDO($baza);
+                        dodajdoBDPDO($pdo);
                         break;
                     case "pokaz" :
-                        echo $baza->select('Select * from klienci');
+                        $sql = 'Select * from klienci';
+                        echo select($sql, $pdo);
                         break;
                     case "php" :
-                        echo $baza->select('Select * from klienci WHERE FIND_IN_SET( "PHP" , `Zamowienie`)');
+                        $sql = 'Select * from klienci WHERE FIND_IN_SET( "PHP" , `Zamowienie`)';
+                        echo select($sql, $pdo);
                         break;
                     case "java" :
-                        echo $baza->select('Select * from klienci WHERE FIND_IN_SET( "Java" , `Zamowienie`)');
+                        $sql = 'Select * from klienci WHERE FIND_IN_SET( "Java" , `Zamowienie`)';
+                        echo select($sql, $pdo);
                         break;
                     case "cpp" :
-                        echo $baza->select('Select * from klienci WHERE FIND_IN_SET( "CPP" , `Zamowienie`)');
+                        $sql = 'Select * from klienci WHERE FIND_IN_SET( "CPP" , `Zamowienie`)';
+                        echo select($sql, $pdo);
                         break;
                     case "statystki" :
-                        //statystyka($bd);
+                        statystyka($pdo);
                         break;
                 }
             }

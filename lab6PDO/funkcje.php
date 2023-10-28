@@ -1,8 +1,6 @@
 <?php
 
-include_once "Klasy/BazaPDO.php";
-
-function dodajdoBDPDO($bd)
+function dodajdoBDPDO($pdo)
 {
     $args = ['nazw' => ['filter' => FILTER_VALIDATE_REGEXP,
         'options' => ['regexp' => '/^[A-Z]{1}[a-ząęłńśćźżó-]{1,25}$/']],
@@ -33,13 +31,19 @@ function dodajdoBDPDO($bd)
 
     if ($errors === "") {
 
-        $stmt = $bd->insert("INSERT INTO klienci(Id,Nazwisko) VALUES(NULL,':par1')");
-        var_dump($dane['nazw']);
-        //$stmt->bindParam('par1', $dane['nazw']);
 
-        //$stmt->bindParam('isisssss', NULL,$dane['nazw'],$dane['wiek'],$dane['panstwo'],$dane['email'],
-            //$dane['jezyk'], $dane['zaplata'] );
+        $sql = "INSERT INTO klienci (Id,Nazwisko, Wiek, Panstwo, Email, Zamowienie, Platnosc) VALUES (:id, :nazwisko, 
+                :wiek , :panstwo, :email, :jezyk,:zaplata)";
 
+
+        $stmt = $pdo ->prepare($sql);
+
+        $jezyk = join(",", $dane['jezyk']);
+
+        $stmt->execute(['id' => NULL, 'nazwisko' => $dane['nazw'], 'wiek' => $dane['wiek'], 'panstwo' => $dane['panstwo'],
+            'email' => $dane['email'], 'jezyk' => $jezyk, 'zaplata' => $dane['zaplata']]);
+
+        echo "<br>Dodano nowego klienta";
 
     } else {
         echo "<br>Nie poprawnie dane: " . $errors;
@@ -48,11 +52,32 @@ function dodajdoBDPDO($bd)
 }
 
 
-function statystyka($bd){
+function statystyka($pdo){
 
-    echo "<table><tr><td>wszystkie osoby: </td><td>". $bd->select("SELECT COUNT(*) AS wszystkie_zamowienia FROM klienci", ["wszystkie_zamowienia"]) . "</td></tr>";
-    echo "<tr><td>Liczba zamowien dla osob ponizej 18: </td><td>" .  $bd->select("SELECT COUNT(*) AS wszystkie_zamowienia FROM klienci WHERE `Wiek` < 18", ["wszystkie_zamowienia"]) . "</td></tr>";
-    echo "<tr><td>Liczba zamowien dla osob powyzej 49: </td><td>" .  $bd->select("SELECT COUNT(*) AS wszystkie_zamowienia FROM klienci WHERE `Wiek` > 49", ["wszystkie_zamowienia"]) . "</td></tr></table>";
+    foreach ($stmt = $pdo ->query("SELECT COUNT(*) AS wszystkie_zamowienia FROM klienci") as $row)
+    {
+        echo "<br>wszystkie osoby: ". $row['wszystkie_zamowienia'];
+    }
+
+    foreach ($stmt = $pdo ->query("SELECT COUNT(*) AS wszystkie_zamowienia FROM klienci WHERE `Wiek` < 18") as $row)
+    {
+        echo "<br>wszystkie osoby poniezej 18 lat: ". $row['wszystkie_zamowienia'];
+    }
+
+    foreach ($stmt = $pdo ->query("SELECT COUNT(*) AS wszystkie_zamowienia FROM klienci WHERE `Wiek` > 49") as $row)
+    {
+        echo "<br>wszystkie osoby powyzej 49 lat: ". $row['wszystkie_zamowienia'];
+    }
 }
+
+function select($sql,$pdo) {
+    //parametr $sql – łańcuch zapytania select
+    foreach ($stmt = $pdo ->query($sql) as $row)
+    {
+        echo "<br>";
+        echo $row['Nazwisko'] . " " .$row['Email'] . " " . $row['Zamowienie'];
+    }
+}
+
 
 ?>

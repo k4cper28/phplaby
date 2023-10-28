@@ -1,52 +1,5 @@
 <?php
 
-//                 function dodaj(){
-//
-//                     $zapis = "";
-//                     $plik = fopen('wyslij.txt','a');
-//
-// //                     if (isset($_REQUEST["nazw"])  && ($_REQUEST['nazw']!="")) {
-// //                         $zapis .= htmlspecialchars($_REQUEST['nazw'])." ";
-// //                     }
-// //                     if (isset($_REQUEST["wiek"]) && ($_REQUEST['wiek']!="")) {
-// //                         $zapis .= htmlspecialchars($_REQUEST['wiek'])." ";
-// //                     }
-// //                     if (isset($_REQUEST["panstwo"]) && ($_REQUEST['panstwo']!="")) {
-// //                         $zapis .= htmlspecialchars($_REQUEST['panstwo'])." ";
-// //                     }
-// //                     if (isset($_REQUEST["email"]) && ($_REQUEST['email']!="")) {
-// //                         $zapis .= htmlspecialchars($_REQUEST['email'])." ";
-// //                     }
-// //                     if (isset($_REQUEST["telefon"]) && ($_REQUEST['telefon']!="")) {
-// //                         $zapis .= htmlspecialchars($_REQUEST['telefon'])." ";
-// //                     }
-// //                      if (isset($_REQUEST['jezyk'])  && ($_REQUEST['jezyk']!="")) {
-// //
-// //                         $zapis .= join(",", $_REQUEST['jezyk']);
-// //
-// //                      }
-// //
-// //                     if (isset($_REQUEST["zaplata"]) && ($_REQUEST['zaplata']!="")) {
-// //                         $zapis .= htmlspecialchars(" " . $_REQUEST['zaplata'])." ";
-// //                     }
-//
-//                     $zapis .= filter_input(INPUT_POST ,'nazw') . " ";
-//                     $zapis .= filter_input(INPUT_POST ,'wiek') . " ";
-//                     $zapis .= filter_input(INPUT_POST ,'email') . " ";
-//                     $zapis .= filter_input(INPUT_POST ,'panstwo') . " ";
-//                     $zapis .= filter_input(INPUT_POST ,'telefon') . " ";
-//                     $zapis .= join(",", $_REQUEST['jezyk']);
-//                     $zapis .=  " " . filter_input(INPUT_POST ,'zaplata');
-//
-//
-//                      if($zapis !== ""){
-//                             $zapis .= "\n";
-//                             fwrite($plik, $zapis);
-//                         }
-//
-//                 }
-
-
 function dodajdoBD($bd)
 {
     $args = ['nazw' => ['filter' => FILTER_VALIDATE_REGEXP,
