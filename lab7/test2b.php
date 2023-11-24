@@ -7,9 +7,12 @@ session_start();
 // Wyświetlanie id sesji i zmiennych sesji
 echo "ID sesji: " . session_id() . "<br>";
 
-echo "Zmienne sesji: <br>";
-foreach ($_SESSION as $key => $value) {
-    echo $key . " => " . $value . "<br>";
+if (isset($_SESSION['p1'])) {
+    $p1_z_sesji=$_SESSION['p1'];
+    $p1 = unserialize($_SESSION['p1']);
+    echo "<p>Obiekt po odtworzeniu (deserializacji): <br />";
+    $p1->show2();
+    echo "</p>";
 }
 
 // Usunięcie sesji

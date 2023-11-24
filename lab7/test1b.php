@@ -5,8 +5,7 @@ session_start();
 
 $user = new User('kubus', 'Kubus Puchatek', 'kubus@stumilowylas.pl', 'ADMIN');
 
-var_dump($user);
-
+$_SESSION['p1'] = serialize($user);
 
 ?>
 
@@ -15,13 +14,12 @@ var_dump($user);
 <body>
 
 <?php
-echo "ID sesji: " . session_id() . "<br>";
+echo "ID sesji: " . session_id() . "<br><br>";
+
+echo "<p>Obiekt zapisany do session: <br />";
+$user -> show2();
 
 
-//echo "Zmienne sesji: <br>";
-//foreach ($_SESSION as $key => $value) {
-//    echo $key . " => " . $value . "<br>";
-//}
 
 echo "<br>Ciasteczka skojarzone z domeną localhost: <br>";
 foreach ($_COOKIE as $key => $value) {
