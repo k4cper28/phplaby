@@ -23,20 +23,6 @@ class User
         $this->status = self::STATUS_USER; // Ustawienie statusu na STATUS_USER
     }
 
-    public function show()
-    {
-        echo $this->userName . " " . $this->fullName . " " . $this->email . " " . $this->status . " "
-            . $this->date->format('Y-m-d') . "<br>";
-    }
-
-    public function show2()
-    {
-        echo 'Username: ' . $this->getUsername() . '<br>';
-        echo 'FullName: ' . $this->getFullName() . '<br>';
-        echo 'email: ' . $this->getEmail() . '<br>';
-        echo 'Passwd: ' . $this->getPasswd() . '<br>';
-    }
-
     public function setUserName($userName)
     {
         $this->userName = $userName;
@@ -92,31 +78,5 @@ class User
     {
         $this->status = $status;
     }
-
-    function saveDB($db)
-    {
-
-        $sql = "INSERT INTO users(id,userName,fullName,email,passwd,status,date) VALUES 
-                 (:id,:user,:fullN,:mail,:pass,:state,:data)";
-
-        $stmt = $db->prepare($sql);
-
-
-        $stmt->execute(['id' => NULL,'user' => $this->userName,'fullN' => $this->fullName,'mail' => $this->email,
-                        'pass'=> $this->passwd,'state'=> $this->status,'data'=>$this->date->format('Y-m-d H:i:s')]);
-
-    }
-
-    static function getAllUsersFromDB($db){
-
-        $sql = "Select * from users";
-
-        foreach ($stmt = $db ->query($sql) as $row)
-        {
-            echo "<br>";
-            echo $row['userName'] . " " .$row['fullName'] . " " . $row['email'] . " " . $row['date'];
-        }
-    }
-
 
 }

@@ -103,7 +103,7 @@ class User
 
 
         $stmt->execute(['id' => NULL,'user' => $this->userName,'fullN' => $this->fullName,'mail' => $this->email,
-                        'pass'=> $this->passwd,'state'=> $this->status,'data'=>$this->date->format('Y-m-d H:i:s')]);
+                        'pass'=> $this->passwd,'state'=> $this->status,'data'=>$this->date]);
 
     }
 
