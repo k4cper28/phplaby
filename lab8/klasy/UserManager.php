@@ -3,7 +3,9 @@
 
 include_once "klasy/Baza.php";
 include_once "klasy/User.php";
+
 class UserManager {
+
  function loginForm() {
  ?>
  <h3>Formularz logowania</h3><p>
@@ -23,6 +25,8 @@ class UserManager {
          </table>
  </form></p> <?php
  }
+
+
  function login($db) {
  //funkcja sprawdza poprawność logowania
  //wynik - id użytkownika zalogowanego lub -1
@@ -45,6 +49,7 @@ class UserManager {
 
          // Rozpocznij sesję zalogowanego użytkownika
          session_start();
+         session_regenerate_id();
 
          // Usuń wszystkie wpisy historyczne dla użytkownika o $userId
          $db->delete("logged_in_users", "userId  = '$userId'");
@@ -56,6 +61,8 @@ class UserManager {
          $sessionId = session_id();
 
          // Dodaj wpis do tabeli logged_in_users
+         $_SESSION['user_id'] = $userId;
+         $_SESSION['sessionId'] = $sessionId;
 
          $sql = "INSERT INTO logged_in_users (sessionId, userId, lastUpdate) VALUES ('$sessionId', $userId, '$date')";
          $db -> insert($sql);
@@ -71,22 +78,27 @@ class UserManager {
  //pobierz id bieżącej sesji (pamiętaj o session_start()
      session_start();
      $sessionId = session_id();
+     session_unset();
      session_destroy();
      $db->delete("logged_in_users", "sessionId  = '$sessionId'");
  }
- function getLoggedInUser($db, $sessionId) {
- // Sprawdź, czy istnieje wpis w tabeli logged_in_users dla podanego id sesji
-        $sql = "SELECT user_id FROM logged_in_users WHERE session_id = '$sessionId'";
-        $result = $db->query($sql);
 
-        if ($result->num_rows > 0) {
-            // Jeśli istnieje wpis, zwróć id zalogowanego użytkownika
-            $row = $result->fetch_assoc();
-            return $row['user_id'];
-        } else {
-            // Jeśli nie istnieje wpis, zwróć -1
-            return -1;
-        }
+ function getLoggedInUser($db, $sessionId) {
+
+ // Sprawdź, czy istnieje wpis w tabeli logged_in_users dla podanego id sesji
+        $sql = "SELECT userId FROM logged_in_users WHERE sessionId = '$sessionId'";
+     $result = mysqli_query($db->getMysqli(), $sql);
+
+     if ($result === false) {
+         die("Błąd zapytania SQL: " . $db->getError());
+     }
+
+     if ($result->num_rows > 0) {
+         $row = $result->fetch_assoc();
+         return $row['userId'];
+     } else {
+         return -1;
+     }
     }
 
 }

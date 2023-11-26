@@ -24,6 +24,9 @@ class Baza
         $this->mysqli->close();
     }
 
+    public function executeQuery($sql) {
+        return $this->mysqli->query($sql);
+    }
 
     public function delete($table, $condition)
     {
@@ -62,6 +65,31 @@ class Baza
  }
         }
         return $id; //id zalogowanego użytkownika(>0) lub -1
+    }
+
+    public function select($sql, $pola)
+    {
+        //parametr $sql – łańcuch zapytania select
+        //parametr $pola - tablica z nazwami pol w bazie
+        //Wynik funkcji – kod HTML tabeli z rekordami (String)
+        $tresc = "";
+        if ($result = $this->mysqli->query($sql)) {
+            $ilepol = count($pola); //ile pól
+            $ile = $result->num_rows; //ile wierszy
+            // pętla po wyniku zapytania $results
+            $tresc .= "<table><tbody>";
+            while ($row = $result->fetch_object()) {
+                $tresc .= "<tr>";
+                for ($i = 0; $i < $ilepol; $i++) {
+                    $p = $pola[$i];
+                    $tresc .= "<td>" . $row->$p . "</td>";
+                }
+                $tresc .= "</tr>";
+            }
+            $tresc .= "</table></tbody>";
+            $result->close(); /* zwolnij pamięć */
+        }
+        return $tresc;
     }
 
 } //koniec klasy Baza
