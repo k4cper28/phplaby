@@ -44,15 +44,16 @@ class UserManager {
  $passwd = $dane["password"];
 
  $userId = $db->selectUser($login, $passwd, "users");
+
      if ($userId >= 0) {
          // Poprawne dane
+
+         //echo $this->isUserInDatabase($db, $userId) . "<br>";
+
 
          // Rozpocznij sesję zalogowanego użytkownika
          session_start();
          session_regenerate_id();
-
-         // Usuń wszystkie wpisy historyczne dla użytkownika o $userId
-         $db->delete("logged_in_users", "userId  = '$userId'");
 
          // Ustaw datę - format("Y-m-d H:i:s")
          $date = date("Y-m-d H:i:s");
@@ -63,6 +64,16 @@ class UserManager {
          // Dodaj wpis do tabeli logged_in_users
          $_SESSION['user_id'] = $userId;
          $_SESSION['sessionId'] = $sessionId;
+
+         $sql = "SELECT userId from logged_in_users where userId = $userId";
+         $czyzalogowany = $db->select($sql,["userId"]);
+
+            if($userId == $czyzalogowany) {
+                return 0;
+            }
+
+         // Usuń wszystkie wpisy historyczne dla użytkownika o $userId
+         $db->delete("logged_in_users", "userId  = '$userId'");
 
          $sql = "INSERT INTO logged_in_users (sessionId, userId, lastUpdate) VALUES ('$sessionId', $userId, '$date')";
          $db -> insert($sql);
@@ -101,4 +112,10 @@ class UserManager {
      }
     }
 
+    public function isUserInDatabase($db, $userId) {
+        // Check if the user with the given ID exists in the database
+        $result = $db->selectUserById($userId, "users"); // Replace with your actual method to retrieve a user by ID
+
+        return $result !== false;
+    }
 }
