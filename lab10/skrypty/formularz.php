@@ -8,7 +8,7 @@ function drukuj_form() {
 function walidacja() { //jak poprzednio – tylko usunąć polecenia echo
 }
 function dodajdoBD($bd) { //funkcja powinna zwracać łańcuch z komunikatem
-//czy udało się czy nie dodać dane do bazy – reszta bez zmian
+//czy udało się czy nie dodać dane do bazy – reszta bez zmia
 }
 //uchwyt do bazy klienci:
 include_once "E:/xampp/htdocs/KS/lab10/klasy/Baza.php";
