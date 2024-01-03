@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<users>
+    <user>
+        <userName>admin</userName>
+        <passwd>admin</passwd>
+        <fullName>Administrator</fullName>
+        <email>admin@gmail.com</email>
+        <date>2018-09-10</date>
+        <status>2</status>
+    </user>
+    <user>
+        <userName>beatap</userName>
+        <passwd>beatap</passwd>
+        <fullName>Beata P.</fullName>
+        <email>beatap@gmail.com</email>
+        <date>2018-10-10</date>
+        <status>1</status>
+    </user>
+<user><userName>k4cper</userName><passwd>$2y$10$yHPevh4kCTH3leTTDGNHwO4A45C.JlXiVxVTwVnOSLh8qTbgdQIaq</passwd><fullName>Kacper Sciuba</fullName><email>kacpersciuba@gmail.com</email><data>2023-10-26</data><status>2</status></user><user><userName>kuba123</userName><passwd>$2y$10$mekGT1wZ3yOfFZUhfy3YGuuXQUYRRDmtEv8GRupbGc2r3TzgQfmFK</passwd><fullName>Kuba Dzban</fullName><email>ronaldo123@wp.pl</email><data>2023-10-29</data><status>2</status></user><user><userName>kuba123456</userName><passwd>$2y$10$4eeCCp//6RfIhy4k94i0MemE5O6MrBSslNkIcvfDGspdb2SQZhS6m</passwd><fullName>Kacper Kozak</fullName><email>ronaldo123@wp.pl</email><data>2023-10-30</data><status>2</status></user><user><userName>henio38</userName><passwd>$2y$10$wQKD0IoIzv8v7YTEqaHz0uaS4iHX5PNsqQmOvhZVKkFB658Xk1B8u</passwd><fullName>Henryk Wiśniewski</fullName><email>ronaldo123@wp.pl</email><data>2023-11-26</data><status>2</status></user><user><userName>henio38</userName><passwd>$2y$10$OD.S/sNDGHwwZhosGF3hpuLFDN.VYCqz4paNsrYakSQri96iFcqzG</passwd><fullName>Henryk Wiśniewski</fullName><email>ronaldo123@wp.pl</email><data>2023-11-26</data><status>2</status></user><user><userName>henio38</userName><passwd>$2y$10$jJYSVamic8YQa1giq1bJ..U/EaXx9iNdTGjP.wV2pISOZx8Ff9obe</passwd><fullName>Henryk Wiśniewski</fullName><email>ronaldo123@wp.pl</email><data>2023-11-26</data><status>2</status></user></users>

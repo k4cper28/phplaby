@@ -1,0 +1,12 @@
+Kowalski 23 Niemcy kacpersciuba@gmail.com 123123123 Java,C#,HTML eurocard 
+Kowalski 23 Niemcy kacpersciuba@gmail.com 123123123 C,Java,C#,HTML,CSS,XML,PHP przelew bankowy 
+Kowalski 12 Polska kacpersciuba@gmail.com 123123123 C#,CSS eurocard 
+Kowalski 23 Niemcy kacpersciuba@gmail.com 123123123 HTML eurocard 
+Kowalski 59 Niemcy sciuba@gmail.com 123123123 Java,C#,HTML eurocard 
+Nowak 14 Usa kacpersciuba@gmail.com 134342352 HTML,CSS,PHP eurocard 
+Kowalski 32 Polska kacpersciuba@gmail.com 123321123 Java,C#,HTML visa 
+Java 23 Niemcy kacpersciuba@gmail.com 123123123 C#,CSS eurocard 
+Kowalski 23 Anglia kacpersciuba@gmail.com 123123123 CPP,HTML eurocard 
+Kacper 32 Anglia kuba12@wp.pl 123123123 CSS,XML,PHP,JavaScript eurocard 
+Java 43 Anglia java@wp.pl 123123123 PHP,JavaScript przelew bankowy 
+Kacper 43 Polska kacper@wp.pl 123123123 HTML,CSS,JavaScript eurocard 
